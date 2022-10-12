@@ -25,8 +25,10 @@ class Basket:
 
         self.item_counter: Counter[str] = Counter()
 
-    def add(self, product_code: str) -> None:
-        self.item_counter.update([product_code])
+    def add(self, product_codes: str | list[str]) -> None:
+        if isinstance(product_codes, str):
+            product_codes = [product_codes]
+        self.item_counter.update(product_codes)
 
     @property
     def total(self) -> float:
