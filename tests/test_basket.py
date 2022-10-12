@@ -7,11 +7,7 @@ from widget_saler.basket import Basket, BasketConfig
 def basket_config() -> BasketConfig:
     return BasketConfig(
         products=[
-            {
-                "name": "Red Widget",
-                "code": "R01",
-                "price": 32.95,
-            },
+            {"name": "Red Widget", "code": "R01", "price": 32.95},
             {"name": "Green Widget", "code": "G01", "price": 24.95},
             {"name": "Blue Widget", "code": "B01", "price": 7.95},
         ],
@@ -42,4 +38,4 @@ def test_basket_total(
     for product_code in product_codes:
         basket.add(product_code)
 
-    assert basket.total == expected_total
+    assert basket.total == pytest.approx(expected_total, 0.001)
