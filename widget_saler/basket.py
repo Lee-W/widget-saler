@@ -2,14 +2,14 @@ from collections import Counter
 from dataclasses import dataclass
 
 from widget_saler.product import Product
-from widget_saler.rule import DeliveryCostChargeRule, SepcialOfferRule
+from widget_saler.rule import DeliveryCostChargeRule, SpecialOfferRule
 
 
 @dataclass
 class BasketConfig:
     products: list[Product]
     delivery_cost_rules: list[DeliveryCostChargeRule]
-    special_offer_rules: list[SepcialOfferRule]
+    special_offer_rules: list[SpecialOfferRule]
 
     def __post_init__(self) -> None:
         # ensure shipping_fee can check the threshold in correct order
@@ -58,17 +58,18 @@ class Basket:
         discount_sum: float = 0
         for offer in self.basket_config.special_offer_rules:
             product_code = offer["product_code"]
-            product_amount = offer["product_amount"]
             item_amount = self.item_counter[product_code]
             if not item_amount:
                 continue
 
-            discount_group_count = item_amount // product_amount
+            offer_product_amount = offer["product_amount"]
+            # calculate how many groups of product can hve discount
+            discount_group_count = item_amount // offer_product_amount
             discount_price = (
                 discount_group_count
-                * product_amount
-                * offer["discount_ratio"]
+                * offer_product_amount
                 * self.product_code_mapping[product_code]["price"]
+                * offer["discount_ratio"]
             )
 
             discount_sum += discount_price
