@@ -1,23 +1,12 @@
 from collections import Counter
-from dataclasses import dataclass
 
+from widget_saler.basket_config import BasketConfig
+from widget_saler.defaults import default_basket_config
 from widget_saler.product import Product
-from widget_saler.rule import DeliveryCostChargeRule, SpecialOfferRule
-
-
-@dataclass
-class BasketConfig:
-    products: list[Product]
-    delivery_cost_rules: list[DeliveryCostChargeRule]
-    special_offer_rules: list[SpecialOfferRule]
-
-    def __post_init__(self) -> None:
-        # ensure shipping_fee can check the threshold in correct order
-        self.delivery_cost_rules.sort(key=lambda rule: rule["lower_than_threshold"])
 
 
 class Basket:
-    def __init__(self, basket_config: BasketConfig) -> None:
+    def __init__(self, basket_config: BasketConfig = default_basket_config) -> None:
         self.basket_config = basket_config
         self.product_code_mapping: dict[str, Product] = {
             product["code"]: product for product in self.basket_config.products
@@ -38,7 +27,7 @@ class Basket:
         return self.discounted_total + self.shipping_fee
 
     @property
-    def discounted_total(self):
+    def discounted_total(self) -> float:
         return self.pure_total - self.discount
 
     @property
