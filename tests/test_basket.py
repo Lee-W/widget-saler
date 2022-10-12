@@ -9,7 +9,8 @@ from widget_saler.basket import Basket
         (("B01", "G01"), 37.85),
         (("R01", "R01"), 54.37),
         (("R01", "G01"), 60.85),
-        (("B01", "B01", "R01", "R01"), 98.25),
+        (("B01", "B01", "R01", "R01", "R01"), 98.25),
+        ((), 0),
     ),
 )
 def test_basket_total(product_codes: list[str], expected_total: float):
