@@ -1,0 +1,26 @@
+{
+  "template": "https://github.com/Lee-W/cookiecutter-python-template",
+  "commit": "628adf32eee89de9bcb4152d5b15744b1ae30397",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "widget_saler",
+      "project_slug": "widget_saler",
+      "project_description": "Widget sale system that calculate order cost including delivery cost and discount",
+      "github_username": "Lee-W",
+      "github_url": "https://github.com/Lee-W/widget_saler",
+      "author_name": "Wei Lee",
+      "author_email": "weilee.rx@gmail.com",
+      "python_version": "3.10",
+      "dependency_management_tool": "poetry",
+      "default_branch": "main",
+      "use_strict_mypy_config": "y",
+      "build_pypi_package": "y",
+      "build_docker_image": "n",
+      "open_source_license": "MIT license",
+      "_template_version": "1.3.0",
+      "_template": "https://github.com/Lee-W/cookiecutter-python-template"
+    }
+  },
+  "directory": null
+}

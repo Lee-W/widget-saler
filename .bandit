@@ -1,0 +1,3 @@
+[bandit]
+targets: widget_saler
+exclude: tests
