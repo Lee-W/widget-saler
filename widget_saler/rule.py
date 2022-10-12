@@ -3,7 +3,7 @@ from typing import TypedDict
 
 class SepcialOfferRule(TypedDict):
     product_code: str
-    amount: int
+    product_amount: int
     discount: float
 
 
