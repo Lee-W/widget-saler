@@ -4,7 +4,7 @@ from typing import TypedDict
 class SepcialOfferRule(TypedDict):
     product_code: str
     product_amount: int
-    discount: float
+    discount_ratio: float
 
 
 class DeliveryCostChargeRule(TypedDict):
