@@ -9,10 +9,10 @@ git clone https://github.com/[YOUR GITHUB ACCOUNT]/widget_saler.git
 ### Step 3. Add this repository to the remote in your local repository
 
 ```sh
-git remote add upstream "https://github.com/Lee-W/widget_saler"
+git remote add upstream "https://github.com/Lee-W/widget-saler"
 ```
 
-You can pull the latest code in main branch through `git pull upstream main` afterward.
+You can pull the latest code in the main branch through `git pull upstream main` afterward.
 
 ### Step 4. Check out a branch for your new feature
 
