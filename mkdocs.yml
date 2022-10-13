@@ -1,8 +1,6 @@
 site_name: Widget Saler
 nav:
   - Home: README.md
-  - Usage: usage.md
-  - Assumption and Future Improvement: assumption_and_future_improvement.md
   - Contributing: contributing.md
 theme:
   name: 'material'
