@@ -25,6 +25,34 @@ basket_config = BasketConfig(
 )
 ```
 
+In addition to directly creating an object in Python, widger_saler also supports loading json configuration files.
+
+```python
+from widget_saler.basket_config import BasketConfig
+
+basket_config = BasketConfig.load_json("config.json")
+```
+
+The following is an example of this `config.json`.
+
+```json
+{
+    "products": [
+        {"name": "Red Widget", "code": "R01", "price": 32.95},
+        {"name": "Green Widget", "code": "G01", "price": 24.95},
+        {"name": "Blue Widget", "code": "B01", "price": 7.95}
+    ],
+    "delivery_cost_rules": [
+        {"lower_than_threshold": 50, "delivery_cost": 4.95},
+        {"lower_than_threshold": 90, "delivery_cost": 2.95}
+    ],
+    "special_offer_rules": [
+        {"product_code": "R01", "product_amount": 2, "discount_ratio": 0.25}
+    ]
+}
+
+```
+
 ### Column definitions
 
 #### product
@@ -121,7 +149,6 @@ widger_saler supports calculating the `pure_toal`, `discount`, `discounted_pure_
 * `discounted_pure_total`: `pure_total` - `discount`
 * `delivery_cost`: check which interval is `discounted_pure_total` in and get the corresponding delivery cost
 * `total`: `discounted_pure_total` + `delivery_cost`
-
 
 Following the previous example, we have `{"R01": 2, "G01": 1}` in our basket. Then, we can get the following values.
 
