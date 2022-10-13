@@ -24,7 +24,7 @@ class Basket:
         if not len(self.item_counter):
             return 0
 
-        return self.discounted_total + self.shipping_fee
+        return self.discounted_total + self.delivery_cost
 
     @property
     def discounted_total(self) -> float:
@@ -66,7 +66,7 @@ class Basket:
         return discount_sum
 
     @property
-    def shipping_fee(self) -> float:
+    def delivery_cost(self) -> float:
         if not len(self.item_counter):
             return 0
 
