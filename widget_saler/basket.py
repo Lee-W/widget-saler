@@ -33,10 +33,8 @@ class Basket:
     @property
     def pure_total(self) -> float:
         return sum(
-            [
-                self.product_code_mapping[product_code]["price"] * count
-                for product_code, count in self.item_counter.items()
-            ]
+            self.product_code_mapping[product_code]["price"] * count
+            for product_code, count in self.item_counter.items()
         )
 
     @property
