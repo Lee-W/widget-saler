@@ -33,9 +33,9 @@ profile = "black"
 [tool.pylint]
     [tool.pylint.messages_control]
     disable = [
-        "bad-continuation",
         "missing-function-docstring",
         "missing-module-docstring",
+        "missing-class-docstring",
         "invalid-name"
     ]
 
