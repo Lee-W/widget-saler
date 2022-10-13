@@ -24,10 +24,10 @@ class Basket:
         if not len(self.item_counter):
             return 0
 
-        return self.discounted_total + self.delivery_cost
+        return self.discounted_pure_total + self.delivery_cost
 
     @property
-    def discounted_total(self) -> float:
+    def discounted_pure_total(self) -> float:
         return self.pure_total - self.discount
 
     @property
@@ -70,9 +70,9 @@ class Basket:
         if not len(self.item_counter):
             return 0
 
-        discounted_total = self.discounted_total
+        discounted_pure_total = self.discounted_pure_total
         for delivery_cost_rule in self.basket_config.delivery_cost_rules:
-            if discounted_total < delivery_cost_rule["lower_than_threshold"]:
+            if discounted_pure_total < delivery_cost_rule["lower_than_threshold"]:
                 return delivery_cost_rule["delivery_cost"]
 
         return 0
