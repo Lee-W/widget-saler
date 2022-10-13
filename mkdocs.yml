@@ -1,9 +1,17 @@
-site_name: widget_saler
+site_name: Widget Saler
 nav:
   - Home: README.md
+  - Usage: usage.md
+  - Assumption and Future Improvement: assumption_and_future_improvement.md
   - Contributing: contributing.md
 theme:
   name: 'material'
-repo_url: https://github.com/Lee-W/widget_saler
+repo_url: https://github.com/Lee-W/widget-saler
 remote_branch: gh-pages
 remote_name: origin
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
