@@ -1,6 +1,6 @@
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.2.0"
+version = "0.3.0"
 tag_format = "$version"
 version_files = [
     "pyproject.toml:version"
@@ -118,7 +118,7 @@ norecursedirs = [
 
 [tool.poetry]
 name = "widget_saler"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Wei Lee <weilee.rx@gmail.com>"]
 description = "Widget sale system that calculate order cost including delivery cost and discount"
 license = "MIT license"

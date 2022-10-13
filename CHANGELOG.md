@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 (2022-10-13)
+
+### Feat
+
+- **basket_config**: add load_json method for loading json configuration file
+
+### Refactor
+
+- **basket**: remove redundant list comprehension
+- **basket**: remove redundant len
+
 ## 0.2.0 (2022-10-13)
 
 ### Feat
