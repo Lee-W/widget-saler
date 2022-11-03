@@ -1,16 +1,22 @@
+import math
 from collections import Counter
 
 from widget_saler.basket_config import BasketConfig
-from widget_saler.defaults import default_basket_config
+from widget_saler.defaults import ROUND_DIGIT, default_basket_config
 from widget_saler.product import Product
 
 
 class Basket:
-    def __init__(self, basket_config: BasketConfig = default_basket_config) -> None:
+    def __init__(
+        self,
+        basket_config: BasketConfig = default_basket_config,
+        round_digit: int = ROUND_DIGIT,
+    ) -> None:
         self.basket_config = basket_config
         self.product_code_mapping: dict[str, Product] = {
             product["code"]: product for product in self.basket_config.products
         }
+        self.round_digit = round_digit
 
         self.item_counter: Counter[str] = Counter()
 
@@ -24,11 +30,16 @@ class Basket:
         if not self.item_counter:
             return 0
 
-        return self.discounted_pure_total + self.delivery_cost
+        power_10 = 10**self.round_digit
+        return (  # type: ignore
+            math.floor(power_10 * (self.discounted_pure_total + self.delivery_cost))
+            / power_10
+        )
 
     @property
     def discounted_pure_total(self) -> float:
         return self.pure_total - self.discount
+        # return round(self.pure_total - self.discount, self.round_digit)
 
     @property
     def pure_total(self) -> float:
@@ -72,5 +83,6 @@ class Basket:
         for delivery_cost_rule in self.basket_config.delivery_cost_rules:
             if discounted_pure_total < delivery_cost_rule["lower_than_threshold"]:
                 return delivery_cost_rule["delivery_cost"]
+                # return round(delivery_cost_rule["delivery_cost"], self.round_digit)
 
         return 0

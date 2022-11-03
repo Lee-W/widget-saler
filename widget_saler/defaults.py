@@ -14,3 +14,5 @@ default_basket_config = BasketConfig(
         {"product_code": "R01", "product_amount": 2, "discount_ratio": 0.25}
     ],
 )
+
+ROUND_DIGIT = 2
