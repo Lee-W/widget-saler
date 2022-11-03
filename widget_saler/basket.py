@@ -31,7 +31,7 @@ class Basket:
             return 0
 
         power_10 = 10**self.round_digit
-        return (
+        return (  # type: ignore
             math.floor(power_10 * (self.discounted_pure_total + self.delivery_cost))
             / power_10
         )
